@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray } from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,8 @@ export class HomeComponent implements OnInit {
     'Downtown', 'S. Bay', 'Lakeside'
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, 
+              private router: Router) { }
 
   ngOnInit(): void {
     this.intializeForm();
@@ -51,6 +53,10 @@ export class HomeComponent implements OnInit {
       preferredLocation: event.target.value
     });
 
+  }
+
+  public navigate(): void {
+    this.router.navigateByUrl('/header');
   }
 
   get references(): FormArray {
